@@ -100,6 +100,7 @@ const del = async (id_doc:number) => {
 
 const view = (filename:string) => {
     const url = new URL(`/uploads/document/${filename}`,Staff).href
+    console.log('Opening URL:', url)
     window.open(url,'_blank')
 }
 
