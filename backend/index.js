@@ -12,7 +12,7 @@ app.use(cors ({
 
 app.use(express.json())
 app.use(fileupload())
-app.use('/uploads',express.statis('uploads'))
+app.use('/uploads',express.static(path.join('uploads')))
 
 
 // 404
