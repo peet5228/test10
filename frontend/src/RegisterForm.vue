@@ -44,6 +44,7 @@
 import axios from 'axios';
 import { ref } from 'vue';
 import { useRouter } from 'vue-router';
+import {api} from '@/api/axios'
 const router = useRouter()
 const form = ref({
     first_name:'',
@@ -69,16 +70,18 @@ function vaildateForm(){
     if(!f.email.trim())error.value.email='กรุณากรอกอีเมล'
     else if(!emailReget.test(f.email))error.value.email='รูปแบบอีเมลไม่ถูกต้อง'
     if(!f.username.trim())error.value.username='กรุณากรอกชื่อผู้ใช้'
-    if(f.username.trim().length < 4)error.value.username='กรุณากรอกชื่อผู้ใช้'
+    else if(f.username.trim().length < 4)error.value.username='ต้องมีอย่างน้อย 4 ตัวษร'
     if(!f.password.trim())error.value.password='กรุณากรอกรหัสผ่าน'
+    else if(f.password.trim().length < 6)error.value.password='ต้องมีอย่างน้อย 6 ตัวษร'
     if(!confirmPassword.value.trim())error.value.confirmPassword='กรุณายืนยันรหัสผ่าน'
+    else if(confirmPassword.value.trim() != f.password.trim())error.value.confirmPassword='รหัสผ่านไม่ตรงกัน'
     if(!f.role.trim())error.value.role='กรุณาเลือกประเภทสมาชิก'
     return Object.keys(error.value).length === 0
 }
 const saveMember = async () =>{
     if(!vaildateForm())return
     try{
-        await axios.post(`htpp://localhost:3001/api/auth/regis`,form.value)
+        await axios.post(`${api}/auth/regis`,form.value)
         alert('สมัครสำเร็จ')
         router.push({path:'/login'})
     }catch(err){
