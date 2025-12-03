@@ -30,6 +30,20 @@ app.use('/api/Eva/selfeva',selfeva)
 const score_eva = require('./routes/Eva/score_eva')
 app.use('/api/Eva/score_eva',score_eva)
 
+// Staff
+const member = require('./routes/Staff/member')
+app.use('/api/Staff/member',member)
+
+const topic = require('./routes/Staff/topic')
+app.use('/api/Staff/topic',topic)
+
+const indicate = require('./routes/Staff/indicate')
+app.use('/api/Staff/indicate',indicate)
+
+const round_eva = require('./routes/Staff/round_eva')
+app.use('/api/Staff/round_eva',round_eva)
+
+
 
 // 404
 app.use((req,res) => res.status(404).json({message:'ปิดปรับปรุง!'}))
