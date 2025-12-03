@@ -2,10 +2,6 @@ const jwt = require('jsonwebtoken')
 const JWT_SECRET = process.env.JWT_SECRET
 
 exports.verifyToken = (req,res,next) => {
-<<<<<<< HEAD
-=======
-    // const authHeader = req.header.authorization
->>>>>>> 1a7e022410b494e22827e8eced4a10973d25a4b6
     const authHeader = req.header('Authorization')
     if(!authHeader || !authHeader.startsWith("Bearer ")) return res.status(401).json({message:'Invalid No Or Token'})
     const token = authHeader.split(" ")[1]

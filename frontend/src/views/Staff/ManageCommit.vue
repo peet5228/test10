@@ -104,7 +104,7 @@ const edit = (items:any) => {
 
 const fetch = async () => {
     try{
-        const res = await axios.get(`${Staff}/member/eva`,{headers : {Authorization: `Bearer ${token}` }})
+        const res = await axios.get(`${Staff}/member/commit`,{headers : {Authorization: `Bearer ${token}` }})
         result.value = res.data
     }catch(err){
         console.error('Error Fetching',err)
@@ -115,8 +115,8 @@ const error = ref<Record<string,string>>({})
 
 const roles = [
     // {text:'ฝ่ายบุคลากร',value:'ฝ่ายบุคลากร'},
-    // {text:'กรรมการประเมิน',value:'กรรมการประเมิน'},
-    {text:'ผู้รับการประเมินผล',value:'ผู้รับการประเมินผล'},
+    {text:'กรรมการประเมิน',value:'กรรมการประเมิน'},
+    // {text:'ผู้รับการประเมินผล',value:'ผู้รับการประเมินผล'},
 ]
 const emailReget = /^[^\s]+@[^\s]+\.[^\s]{2,}$/i
 

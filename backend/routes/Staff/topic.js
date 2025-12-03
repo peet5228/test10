@@ -3,21 +3,8 @@ const db = require('../../db')
 const router = express.Router()
 const {verifyToken,requireRole} = require('../../middleware/authMiddleware')
 
-// ================= DEMO ======================
 // API สำหรับ Get ข้อมูล
-// router.get('/',async (req,res) => {
-//     try{
-//         const [rows] = await db.query(``)
-//         res.json(rows)
-//     }catch(err){
-//         console.error('Error Get',err)
-//         res.status(500).json({message:'Error Get'})
-//     }
-// })
-// ================= DEMO ======================
-
-// API สำหรับ Get ข้อมูล
-router.get('/',verifyToken,requireRole(ฝ่ายบุคลากร),async (req,res) => {
+router.get('/',verifyToken,requireRole('ฝ่ายบุคลากร'),async (req,res) => {
     try{
         const [rows] = await db.query(`select * from tb_topic order by id_topic desc`)
         res.json(rows)
@@ -28,7 +15,7 @@ router.get('/',verifyToken,requireRole(ฝ่ายบุคลากร),async 
 })
 
 // API สำหรับ Get ข้อมูล where parans
-router.get('/:id_topic',verifyToken,requireRole(ฝ่ายบุคลากร),async (req,res) => {
+router.get('/:id_topic',verifyToken,requireRole('ฝ่ายบุคลากร'),async (req,res) => {
     try{
         const {id_topic} = req.params
         const [rows] = await db.query(`select * from tb_topic where id_topic='${id_topic}'`)
@@ -41,7 +28,7 @@ router.get('/:id_topic',verifyToken,requireRole(ฝ่ายบุคลาก�
 })
 
 // API สำหรับ Insert ข้อมูล
-router.post('/',verifyToken,requireRole(ฝ่ายบุคลากร),async (req,res) => {
+router.post('/',verifyToken,requireRole('ฝ่ายบุคลากร'),async (req,res) => {
     try{
         const {name_topic} = req.body
         const [rows] = await db.query(`insert into tb_topic (name_topic) values (?)`,[name_topic])
@@ -53,7 +40,7 @@ router.post('/',verifyToken,requireRole(ฝ่ายบุคลากร),async
 })
 
 // API สำหรับ Update ข้อมูล
-router.put('/:id_topic',verifyToken,requireRole(ฝ่ายบุคลากร),async (req,res) => {
+router.put('/:id_topic',verifyToken,requireRole('ฝ่ายบุคลากร'),async (req,res) => {
     try{
         const {id_topic} = req.params
         const {name_topic} = req.body
@@ -66,7 +53,7 @@ router.put('/:id_topic',verifyToken,requireRole(ฝ่ายบุคลาก�
 })
 
 // API สำหรับ Delete ข้อมูล
-router.delete('/:id_topic',verifyToken,requireRole(ฝ่ายบุคลากร),async (req,res) => {
+router.delete('/:id_topic',verifyToken,requireRole('ฝ่ายบุคลากร'),async (req,res) => {
     try{
         const {id_topic} = req.params
         const [rows] = await db.query(`delete from tb_topic where id_topic='${id_topic}'`)
