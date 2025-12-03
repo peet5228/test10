@@ -10,6 +10,13 @@ import Topic from '@/views/Staff/Topic.vue'
 import Indicate from '@/views/Staff/Indicate.vue'
 import Round_eva from '@/views/Staff/Round_eva.vue'
 import Eva from '@/views/Staff/Eva.vue'
+import Eva_commit from '@/views/Staff/Eva_commit.vue'
+import Score_evaList from '@/views/Staff/Score_evaList.vue'
+import StatusEva from '@/views/Staff/StatusEva.vue'
+import Score_commitList from '@/views/Staff/Score_commitList.vue'
+import StatusCommit from '@/views/Staff/StatusCommit.vue'
+import Status2 from '@/views/Staff/Status2.vue'
+import Document from '@/views/Staff/Document.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -68,6 +75,41 @@ const router = createRouter({
           path: '/Eva',
           name: 'Eva',
           component: Eva,
+        },
+        {
+          path: '/Eva_commit/:id_eva',
+          name: 'Eva_commit',
+          component: Eva_commit,
+        },
+        {
+          path: '/Score_evaList',
+          name: 'Score_evaList',
+          component: Score_evaList,
+        },
+        {
+          path: '/Score_commitList',
+          name: 'Score_commitList',
+          component: Score_commitList,
+        },
+        {
+          path: '/StatusEva',
+          name: 'StatusEva',
+          component: StatusEva,
+        },
+        {
+          path: '/StatusCommit',
+          name: 'StatusCommit',
+          component: StatusCommit,
+        },
+        {
+          path: '/Status2/:id_eva',
+          name: 'Status2',
+          component: Status2,
+        },
+        {
+          path: '/Document',
+          name: 'Document',
+          component: Document,
         },
       ]
     },
