@@ -20,6 +20,16 @@ app.use('/api/auth',auth)
 const profile = require('./routes/profile')
 app.use('/api/profile',profile)
 
+//eva
+const me = require('./routes/Eva/me')
+app.use('/api/Eva/me',me)
+
+const selfeva = require('./routes/Eva/selfeva')
+app.use('/api/Eva/selfeva',selfeva)
+
+const score_eva = require('./routes/Eva/score_eva')
+app.use('/api/Eva/score_eva',score_eva)
+
 // Staff
 const member = require('./routes/Staff/member')
 app.use('/api/Staff/member',member)
@@ -44,6 +54,7 @@ app.use('/api/Staff/status',status)
 
 const doc = require('./routes/Staff/doc')
 app.use('/api/Staff/doc',doc)
+
 
 
 // 404
